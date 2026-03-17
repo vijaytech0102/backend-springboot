@@ -1,0 +1,21 @@
+<div class="records-container">
+  <h1 class="mb-4">Medical Records</h1>
+  <div *ngIf="medicalRecords.length === 0" class="alert alert-info">
+    No medical records found.
+  </div>
+  <div class="record-list">
+    <div class="record-card" *ngFor="let record of medicalRecords">
+      <div class="record-header">
+        <h5>{{ record.appointment?.doctor?.user?.fullName }}</h5>
+        <span class="date">{{ record.createdAt | date: 'MMM d, yyyy' }}</span>
+      </div>
+      <div class="record-content">
+        <p><strong>Diagnosis:</strong> {{ record.diagnosis }}</p>
+        <p *ngIf="record.prescription"><strong>Prescription:</strong> {{ record.prescription }}</p>
+        <p *ngIf="record.labTests"><strong>Lab Tests:</strong> {{ record.labTests }}</p>
+        <p *ngIf="record.doctorNotes"><strong>Doctor Notes:</strong> {{ record.doctorNotes }}</p>
+        <p *ngIf="record.followUpDate"><strong>Follow Up:</strong> {{ record.followUpDate | date: 'MMM d, yyyy' }}</p>
+      </div>
+    </div>
+  </div>
+</div>

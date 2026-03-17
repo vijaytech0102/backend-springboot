@@ -1,0 +1,91 @@
+{% extends 'dashboard/base.html' %}
+
+{% block title %}Smart Home Control - Alexa Dashboard{% endblock %}
+
+{% block content %}
+<div class="py-4">
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <h2><i class="bi bi-house-fill"></i> Smart Home Control</h2>
+            <p class="text-muted">Control your smart devices with natural voice commands</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card shadow">
+                <div class="card-header bg-success text-white">
+                    Control Device
+                </div>
+                <div class="card-body">
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label class="form-label">Device Name</label>
+                            {{ form.device }}
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Command</label>
+                            {{ form.command }}
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Parameter (Optional)</label>
+                            {{ form.parameter }}
+                        </div>
+                        <button type="submit" class="btn btn-success w-100">
+                            <i class="bi bi-lightning-fill"></i> Execute Command
+                        </button>
+                    </form>
+
+                    <hr>
+                    
+                    <div>
+                        <h6>Example Commands:</h6>
+                        <ul class="small">
+                            <li>"Turn on the living room lights"</li>
+                            <li>"Set bedroom brightness to 50%"</li>
+                            <li>"Set thermostat to 72 degrees"</li>
+                            <li>"Lock the front door"</li>
+                            <li>"Start recording the porch camera"</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card shadow">
+                <div class="card-header bg-success text-white">
+                    Device Status
+                </div>
+                <div class="card-body">
+                    {% if devices %}
+                        <div class="device-list">
+                            {% for device in devices %}
+                            <div class="mb-3 p-3 border rounded bg-light">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <strong>{{ device.name }}</strong>
+                                        <small class="text-muted d-block">{{ device.location }}</small>
+                                    </div>
+                                    <div>
+                                        <span class="badge bg-info">{{ device.device_type }}</span>
+                                        <span class="badge bg-success">{{ device.state }}</span>
+                                    </div>
+                                </div>
+                                <small class="text-muted d-block mt-2">Updated: {{ device.last_updated|date:"H:i" }}</small>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        <p class="text-muted text-center py-5">
+                            <i class="bi bi-device-hdd" style="font-size: 2rem; display: block; margin-bottom: 1rem;"></i>
+                            No devices connected yet
+                        </p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

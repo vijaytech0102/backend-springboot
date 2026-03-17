@@ -1,0 +1,59 @@
+{% extends 'dashboard/base.html' %}
+
+{% block title %}Chat - Alexa Dashboard{% endblock %}
+
+{% block content %}
+<div class="py-4">
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <h2><i class="bi bi-chat-fill"></i> Chat with Alexa</h2>
+            <p class="text-muted">Have a natural conversation with your AI assistant</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <div class="card shadow">
+                <div class="card-body conversation-area">
+                    {% if conversations %}
+                        <div class="conversation-history mb-4" style="max-height: 400px; overflow-y: auto;">
+                            {% for conv in conversations %}
+                            <div class="mb-3">
+                                <div class="user-message bg-primary text-white p-3 rounded" style="margin-left: auto; max-width: 80%; width: fit-content;">
+                                    <small class="text-white-50">{{ conv.timestamp|date:"H:i" }}</small>
+                                    <p class="mb-0">{{ conv.user_message }}</p>
+                                </div>
+                                <div class="alexa-message bg-light p-3 rounded mt-2">
+                                    <strong class="text-primary">Alexa:</strong>
+                                    <p class="mb-0 mt-1">{{ conv.alexa_response }}</p>
+                                    {% if conv.intent %}
+                                    <small class="text-muted d-block mt-2">Intent: {{ conv.intent }}</small>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        <div class="text-center text-muted py-5">
+                            <i class="bi bi-chat-dots" style="font-size: 3rem;"></i>
+                            <p class="mt-3">No conversations yet. Start typing below!</p>
+                        </div>
+                    {% endif %}
+                </div>
+
+                <div class="card-footer">
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="input-group">
+                            {{ form.message }}
+                            <button class="btn btn-primary" type="submit">
+                                <i class="bi bi-send"></i> Send
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,18 +1,19 @@
 package com.example.onetomany.service;
 
-import com.example.onetomany.dto.AuthorDTO;
-import com.example.onetomany.dto.BookDTO;
-import com.example.onetomany.entity.Author;
-import com.example.onetomany.entity.Book;
-import com.example.onetomany.repository.AuthorRepository;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
-import java.util.stream.Collectors;
+import com.example.onetomany.dto.AuthorDTO;
+import com.example.onetomany.dto.BookDTO;
+import com.example.onetomany.entity.Author;
+import com.example.onetomany.entity.Book;
+import com.example.onetomany.repository.AuthorRepository;
 
 /**
  * Service class for Author entity
@@ -38,6 +39,7 @@ public class AuthorService {
         author.setCountry(authorDTO.getCountry());
 
         Author savedAuthor = authorRepository.save(author);
+
         logger.info("Author created with ID: {}", savedAuthor.getId());
         return convertToDTO(savedAuthor);
     }
@@ -86,7 +88,7 @@ public class AuthorService {
 
         Author updatedAuthor = authorRepository.save(author);
         logger.info("Author updated with ID: {}", id);
-        return convertToDTO(updatedAuthor);
+         return convertToDTO(updatedAuthor);
     }
 
     /**
@@ -132,10 +134,13 @@ public class AuthorService {
 
         if (author.getBooks() != null && !author.getBooks().isEmpty()) {
             dto.setBooks(author.getBooks().stream()
-                    .map(this::convertBookToDTO)
+                    .map(this::convertBookToDTO )
                     .collect(Collectors.toList()));
         }
-
+        for(Book book:author.getBooks()){
+            logger.info("Book Title: {}, Author: {}", book.getTitle(), author.getName());
+            convertBookToDTO(book);
+        }
         return dto;
     }
 

@@ -1,0 +1,642 @@
+[INFO] Scanning for projects...
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for com.healthcare:healthcare-management-system:jar:1.0.0
+[WARNING] 'dependencies.dependency.(groupId:artifactId:type:classifier)' must be unique: org.projectlombok:lombok:jar -> version ${lombok.version} vs 1.18.44 @ line 125, column 13
+[WARNING] 'dependencies.dependency.(groupId:artifactId:type:classifier)' must be unique: org.projectlombok:lombok:jar -> version ${lombok.version} vs 1.18.44 @ line 158, column 13
+[WARNING] 
+[WARNING] It is highly recommended to fix these problems because they threaten the stability of your build.
+[WARNING] 
+[WARNING] For this reason, future Maven versions might no longer support building such malformed projects.
+[WARNING] 
+[INFO] 
+[INFO] ------------< com.healthcare:healthcare-management-system >-------------
+[INFO] Building Healthcare Management System 1.0.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ healthcare-management-system ---
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO] Copying 0 resource from src\main\resources to target\classes
+[INFO] 
+[INFO] --- compiler:3.10.1:compile (default-compile) @ healthcare-management-system ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 58 source files to d:\project\healthcare-management\backend\target\classes
+[INFO] -------------------------------------------------------------
+[ERROR] COMPILATION ERROR : 
+[INFO] -------------------------------------------------------------
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/exception/GlobalExceptionHandler.java:[26,9] cannot find symbol
+  symbol:   variable log
+  location: class com.healthcare.exception.GlobalExceptionHandler
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/exception/GlobalExceptionHandler.java:[27,52] cannot find symbol
+  symbol:   method builder()
+  location: class com.healthcare.exception.ErrorResponse
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/exception/GlobalExceptionHandler.java:[41,9] cannot find symbol
+  symbol:   variable log
+  location: class com.healthcare.exception.GlobalExceptionHandler
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/exception/GlobalExceptionHandler.java:[42,52] cannot find symbol
+  symbol:   method builder()
+  location: class com.healthcare.exception.ErrorResponse
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/exception/GlobalExceptionHandler.java:[56,9] cannot find symbol
+  symbol:   variable log
+  location: class com.healthcare.exception.GlobalExceptionHandler
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/exception/GlobalExceptionHandler.java:[57,52] cannot find symbol
+  symbol:   method builder()
+  location: class com.healthcare.exception.ErrorResponse
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/exception/GlobalExceptionHandler.java:[71,9] cannot find symbol
+  symbol:   variable log
+  location: class com.healthcare.exception.GlobalExceptionHandler
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/exception/GlobalExceptionHandler.java:[72,52] cannot find symbol
+  symbol:   method builder()
+  location: class com.healthcare.exception.ErrorResponse
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/exception/GlobalExceptionHandler.java:[86,9] cannot find symbol
+  symbol:   variable log
+  location: class com.healthcare.exception.GlobalExceptionHandler
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/exception/GlobalExceptionHandler.java:[91,52] cannot find symbol
+  symbol:   method builder()
+  location: class com.healthcare.exception.ErrorResponse
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/exception/GlobalExceptionHandler.java:[105,9] cannot find symbol
+  symbol:   variable log
+  location: class com.healthcare.exception.GlobalExceptionHandler
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/exception/GlobalExceptionHandler.java:[110,52] cannot find symbol
+  symbol:   method builder()
+  location: class com.healthcare.exception.ErrorResponse
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/exception/GlobalExceptionHandler.java:[124,9] cannot find symbol
+  symbol:   variable log
+  location: class com.healthcare.exception.GlobalExceptionHandler
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/exception/GlobalExceptionHandler.java:[125,52] cannot find symbol
+  symbol:   method builder()
+  location: class com.healthcare.exception.ErrorResponse
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/security/JwtTokenProvider.java:[33,56] cannot find symbol
+  symbol:   method getUserId()
+  location: variable userPrincipal of type com.healthcare.security.UserPrincipal
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/security/JwtTokenProvider.java:[71,13] cannot find symbol
+  symbol:   variable log
+  location: class com.healthcare.security.JwtTokenProvider
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/security/JwtTokenProvider.java:[73,13] cannot find symbol
+  symbol:   variable log
+  location: class com.healthcare.security.JwtTokenProvider
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/security/JwtTokenProvider.java:[75,13] cannot find symbol
+  symbol:   variable log
+  location: class com.healthcare.security.JwtTokenProvider
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/security/JwtTokenProvider.java:[77,13] cannot find symbol
+  symbol:   variable log
+  location: class com.healthcare.security.JwtTokenProvider
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/security/JwtTokenProvider.java:[79,13] cannot find symbol
+  symbol:   variable log
+  location: class com.healthcare.security.JwtTokenProvider
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/security/CustomUserDetailsService.java:[25,21] cannot find symbol
+  symbol:   variable log
+  location: class com.healthcare.security.CustomUserDetailsService
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/security/CustomUserDetailsService.java:[29,18] cannot find symbol
+  symbol:   method getIsActive()
+  location: variable user of type com.healthcare.entity.User
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/security/CustomUserDetailsService.java:[40,18] cannot find symbol
+  symbol:   method getIsActive()
+  location: variable user of type com.healthcare.entity.User
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/security/JwtAuthenticationFilter.java:[44,17] cannot find symbol
+  symbol:   variable log
+  location: class com.healthcare.security.JwtAuthenticationFilter
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/security/JwtAuthenticationFilter.java:[47,13] cannot find symbol
+  symbol:   variable log
+  location: class com.healthcare.security.JwtAuthenticationFilter
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/PatientService.java:[30,30] cannot find symbol
+  symbol:   method getRole()
+  location: variable user of type com.healthcare.entity.User
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/PatientService.java:[41,17] cannot find symbol
+  symbol:   method setFullName(java.lang.String)
+  location: variable user of type com.healthcare.entity.User
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/PatientService.java:[44,17] cannot find symbol
+  symbol:   method setPhone(java.lang.String)
+  location: variable user of type com.healthcare.entity.User
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/PatientService.java:[47,17] cannot find symbol
+  symbol:   method setAddress(java.lang.String)
+  location: variable user of type com.healthcare.entity.User
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/PatientService.java:[50,17] cannot find symbol
+  symbol:   method setDateOfBirth(java.time.LocalDate)
+  location: variable user of type com.healthcare.entity.User
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/PatientService.java:[54,9] cannot find symbol
+  symbol:   variable log
+  location: class com.healthcare.service.PatientService
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/PatientService.java:[54,68] cannot find symbol
+  symbol:   method getUserId()
+  location: variable updated of type com.healthcare.entity.User
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/PatientService.java:[57,33] cannot find symbol
+  symbol:   method getRole()
+  location: variable updated of type com.healthcare.entity.User
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/PatientService.java:[65,39] cannot find symbol
+  symbol:   method getUserId()
+  location: variable user of type com.healthcare.entity.User
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/PatientService.java:[66,9] cannot find symbol
+  symbol:   variable log
+  location: class com.healthcare.service.PatientService
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/PatientService.java:[66,65] cannot find symbol
+  symbol:   method getUserId()
+  location: variable user of type com.healthcare.entity.User
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/MedicalRecordService.java:[36,52] cannot find symbol
+  symbol:   method builder()
+  location: class com.healthcare.entity.MedicalRecord
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/MedicalRecordService.java:[46,9] cannot find symbol
+  symbol:   variable log
+  location: class com.healthcare.service.MedicalRecordService
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/MedicalRecordService.java:[61,17] cannot find symbol
+  symbol:   method getUserId()
+  location: class com.healthcare.entity.User
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/MedicalRecordService.java:[75,19] cannot find symbol
+  symbol:   method setDiagnosis(java.lang.String)
+  location: variable record of type com.healthcare.entity.MedicalRecord
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/MedicalRecordService.java:[78,19] cannot find symbol
+  symbol:   method setPrescription(java.lang.String)
+  location: variable record of type com.healthcare.entity.MedicalRecord
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/MedicalRecordService.java:[81,19] cannot find symbol
+  symbol:   method setLabTests(java.lang.String)
+  location: variable record of type com.healthcare.entity.MedicalRecord
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/MedicalRecordService.java:[84,19] cannot find symbol
+  symbol:   method setFollowUpDate(java.time.LocalDate)
+  location: variable record of type com.healthcare.entity.MedicalRecord
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/MedicalRecordService.java:[88,9] cannot find symbol
+  symbol:   variable log
+  location: class com.healthcare.service.MedicalRecordService
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/MedicalRecordService.java:[95,19] cannot find symbol
+  symbol:   method getAppointment()
+  location: variable record of type com.healthcare.entity.MedicalRecord
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/MedicalRecordService.java:[96,59] cannot find symbol
+  symbol:   method getAppointment()
+  location: variable record of type com.healthcare.entity.MedicalRecord
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/AdminService.java:[38,42] cannot find symbol
+  symbol:   method getRole()
+  location: variable user of type com.healthcare.entity.User
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/AdminService.java:[49,31] cannot find symbol
+  symbol:   method getIsActive()
+  location: variable user of type com.healthcare.entity.User
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/AdminService.java:[51,9] cannot find symbol
+  symbol:   variable log
+  location: class com.healthcare.service.AdminService
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/AdminService.java:[51,84] cannot find symbol
+  symbol:   method getIsActive()
+  location: variable updated of type com.healthcare.entity.User
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/AdminService.java:[54,33] cannot find symbol
+  symbol:   method getRole()
+  location: variable updated of type com.healthcare.entity.User
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/AdminService.java:[64,9] cannot find symbol
+  symbol:   variable log
+  location: class com.healthcare.service.AdminService
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/AdminService.java:[93,34] cannot find symbol
+  symbol:   method builder()
+  location: class com.healthcare.dto.response.AdminStatsResponse
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/BillingService.java:[42,17] cannot find symbol
+  symbol:   method getUserId()
+  location: class com.healthcare.entity.User
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/BillingService.java:[55,13] cannot find symbol
+  symbol:   method setPaymentStatus(com.healthcare.enums.PaymentStatus)
+  location: variable bill of type com.healthcare.entity.Bill
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/BillingService.java:[56,13] cannot find symbol
+  symbol:   method setPaymentDate(java.time.LocalDateTime)
+  location: variable bill of type com.healthcare.entity.Bill
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/BillingService.java:[58,9] cannot find symbol
+  symbol:   variable log
+  location: class com.healthcare.service.BillingService
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/BillingService.java:[72,39] cannot find symbol
+  symbol:   method getPaymentStatus()
+  location: variable bill of type com.healthcare.entity.Bill
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/BillingService.java:[73,17] cannot find symbol
+  symbol:   method getAppointment()
+  location: variable bill of type com.healthcare.entity.Bill
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/BillingService.java:[74,43] cannot find symbol
+  symbol:   method getAppointment()
+  location: variable bill of type com.healthcare.entity.Bill
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/AuthService.java:[41,9] cannot find symbol
+  symbol:   variable log
+  location: class com.healthcare.service.AuthService
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/AuthService.java:[44,13] cannot find symbol
+  symbol:   variable log
+  location: class com.healthcare.service.AuthService
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/AuthService.java:[49,13] cannot find symbol
+  symbol:   method setFullName(java.lang.String)
+  location: variable user of type com.healthcare.entity.User
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/AuthService.java:[50,13] cannot find symbol
+  symbol:   method setEmail(java.lang.String)
+  location: variable user of type com.healthcare.entity.User
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/AuthService.java:[51,13] cannot find symbol
+  symbol:   method setPassword(java.lang.String)
+  location: variable user of type com.healthcare.entity.User
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/AuthService.java:[52,13] cannot find symbol
+  symbol:   method setPhone(java.lang.String)
+  location: variable user of type com.healthcare.entity.User
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/AuthService.java:[53,13] cannot find symbol
+  symbol:   method setIsActive(boolean)
+  location: variable user of type com.healthcare.entity.User
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/AuthService.java:[57,17] cannot find symbol
+  symbol:   method setRole(com.healthcare.enums.Role)
+  location: variable user of type com.healthcare.entity.User
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/AuthService.java:[63,9] cannot find symbol
+  symbol:   variable log
+  location: class com.healthcare.service.AuthService
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/AuthService.java:[63,71] cannot find symbol
+  symbol:   method getUserId()
+  location: variable savedUser of type com.healthcare.entity.User
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/AuthService.java:[65,22] cannot find symbol
+  symbol:   method getRole()
+  location: variable savedUser of type com.healthcare.entity.User
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/AuthService.java:[69,35] cannot find symbol
+  symbol:   method builder()
+  location: class com.healthcare.entity.Doctor
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/AuthService.java:[78,13] cannot find symbol
+  symbol:   variable log
+  location: class com.healthcare.service.AuthService
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/AuthService.java:[78,73] cannot find symbol
+  symbol:   method getUserId()
+  location: variable savedUser of type com.healthcare.entity.User
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/AuthService.java:[85,9] cannot find symbol
+  symbol:   variable log
+  location: class com.healthcare.service.AuthService
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/AuthService.java:[97,62] cannot find symbol
+  symbol:   method getUserId()
+  location: variable userPrincipal of type com.healthcare.security.UserPrincipal
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/AuthService.java:[100,38] cannot find symbol
+  symbol:   method getRole()
+  location: variable user of type com.healthcare.entity.User
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/AuthService.java:[102,13] cannot find symbol
+  symbol:   variable log
+  location: class com.healthcare.service.AuthService
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/AuthService.java:[111,13] cannot find symbol
+  symbol:   variable log
+  location: class com.healthcare.service.AuthService
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/DoctorService.java:[68,19] cannot find symbol
+  symbol:   method setBio(java.lang.String)
+  location: variable doctor of type com.healthcare.entity.Doctor
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/DoctorService.java:[71,19] cannot find symbol
+  symbol:   method setAvailabilityDays(java.lang.String)
+  location: variable doctor of type com.healthcare.entity.Doctor
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/DoctorService.java:[74,19] cannot find symbol
+  symbol:   method setAvailableFrom(java.time.LocalTime)
+  location: variable doctor of type com.healthcare.entity.Doctor
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/DoctorService.java:[77,19] cannot find symbol
+  symbol:   method setAvailableTo(java.time.LocalTime)
+  location: variable doctor of type com.healthcare.entity.Doctor
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/DoctorService.java:[81,9] cannot find symbol
+  symbol:   variable log
+  location: class com.healthcare.service.DoctorService
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/DoctorService.java:[81,69] cannot find symbol
+  symbol:   method getDoctorId()
+  location: variable updated of type com.healthcare.entity.Doctor
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/DoctorService.java:[90,15] cannot find symbol
+  symbol:   method setIsAvailable(java.lang.Boolean)
+  location: variable doctor of type com.healthcare.entity.Doctor
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/DoctorService.java:[92,9] cannot find symbol
+  symbol:   variable log
+  location: class com.healthcare.service.DoctorService
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/DoctorService.java:[97,19] cannot find symbol
+  symbol:   method getUser()
+  location: variable doctor of type com.healthcare.entity.Doctor
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/DoctorService.java:[98,52] cannot find symbol
+  symbol:   method getUser()
+  location: variable doctor of type com.healthcare.entity.Doctor
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/DoctorService.java:[99,46] cannot find symbol
+  symbol:   method getUser()
+  location: variable doctor of type com.healthcare.entity.Doctor
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/DoctorService.java:[101,79] cannot find symbol
+  symbol:   method getDoctorId()
+  location: variable doctor of type com.healthcare.entity.Doctor
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/security/UserPrincipal.java:[27,80] cannot find symbol
+  symbol:   method getRole()
+  location: variable user of type com.healthcare.entity.User
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/security/UserPrincipal.java:[26,21] cannot find symbol
+  symbol:   method getPassword()
+  location: variable user of type com.healthcare.entity.User
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/security/UserPrincipal.java:[25,21] cannot find symbol
+  symbol:   method getEmail()
+  location: variable user of type com.healthcare.entity.User
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/security/UserPrincipal.java:[24,21] cannot find symbol
+  symbol:   method getUserId()
+  location: variable user of type com.healthcare.entity.User
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/FeedbackService.java:[42,25] cannot find symbol
+  symbol:   method getPatient()
+  location: variable appointment of type com.healthcare.entity.Appointment
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/FeedbackService.java:[42,65] cannot find symbol
+  symbol:   method getUserId()
+  location: variable patient of type com.healthcare.entity.User
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/FeedbackService.java:[53,37] cannot find symbol
+  symbol:   method builder()
+  location: class com.healthcare.entity.Feedback
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/FeedbackService.java:[62,9] cannot find symbol
+  symbol:   variable log
+  location: class com.healthcare.service.FeedbackService
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/FeedbackService.java:[62,100] cannot find symbol
+  symbol:   method getUserId()
+  location: variable patient of type com.healthcare.entity.User
+[INFO] 100 errors 
+[INFO] -------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  2.933 s
+[INFO] Finished at: 2026-03-15T12:22:34+05:30
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.10.1:compile (default-compile) on project healthcare-management-system: Compilation failure: Compilation failure: 
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/exception/GlobalExceptionHandler.java:[26,9] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.healthcare.exception.GlobalExceptionHandler
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/exception/GlobalExceptionHandler.java:[27,52] cannot find symbol
+[ERROR]   symbol:   method builder()
+[ERROR]   location: class com.healthcare.exception.ErrorResponse
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/exception/GlobalExceptionHandler.java:[41,9] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.healthcare.exception.GlobalExceptionHandler
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/exception/GlobalExceptionHandler.java:[42,52] cannot find symbol
+[ERROR]   symbol:   method builder()
+[ERROR]   location: class com.healthcare.exception.ErrorResponse
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/exception/GlobalExceptionHandler.java:[56,9] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.healthcare.exception.GlobalExceptionHandler
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/exception/GlobalExceptionHandler.java:[57,52] cannot find symbol
+[ERROR]   symbol:   method builder()
+[ERROR]   location: class com.healthcare.exception.ErrorResponse
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/exception/GlobalExceptionHandler.java:[71,9] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.healthcare.exception.GlobalExceptionHandler
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/exception/GlobalExceptionHandler.java:[72,52] cannot find symbol
+[ERROR]   symbol:   method builder()
+[ERROR]   location: class com.healthcare.exception.ErrorResponse
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/exception/GlobalExceptionHandler.java:[86,9] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.healthcare.exception.GlobalExceptionHandler
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/exception/GlobalExceptionHandler.java:[91,52] cannot find symbol
+[ERROR]   symbol:   method builder()
+[ERROR]   location: class com.healthcare.exception.ErrorResponse
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/exception/GlobalExceptionHandler.java:[105,9] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.healthcare.exception.GlobalExceptionHandler
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/exception/GlobalExceptionHandler.java:[110,52] cannot find symbol
+[ERROR]   symbol:   method builder()
+[ERROR]   location: class com.healthcare.exception.ErrorResponse
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/exception/GlobalExceptionHandler.java:[124,9] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.healthcare.exception.GlobalExceptionHandler
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/exception/GlobalExceptionHandler.java:[125,52] cannot find symbol
+[ERROR]   symbol:   method builder()
+[ERROR]   location: class com.healthcare.exception.ErrorResponse
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/security/JwtTokenProvider.java:[33,56] cannot find symbol
+[ERROR]   symbol:   method getUserId()
+[ERROR]   location: variable userPrincipal of type com.healthcare.security.UserPrincipal
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/security/JwtTokenProvider.java:[71,13] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.healthcare.security.JwtTokenProvider
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/security/JwtTokenProvider.java:[73,13] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.healthcare.security.JwtTokenProvider
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/security/JwtTokenProvider.java:[75,13] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.healthcare.security.JwtTokenProvider
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/security/JwtTokenProvider.java:[77,13] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.healthcare.security.JwtTokenProvider
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/security/JwtTokenProvider.java:[79,13] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.healthcare.security.JwtTokenProvider
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/security/CustomUserDetailsService.java:[25,21] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.healthcare.security.CustomUserDetailsService
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/security/CustomUserDetailsService.java:[29,18] cannot find symbol
+[ERROR]   symbol:   method getIsActive()
+[ERROR]   location: variable user of type com.healthcare.entity.User
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/security/CustomUserDetailsService.java:[40,18] cannot find symbol
+[ERROR]   symbol:   method getIsActive()
+[ERROR]   location: variable user of type com.healthcare.entity.User
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/security/JwtAuthenticationFilter.java:[44,17] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.healthcare.security.JwtAuthenticationFilter
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/security/JwtAuthenticationFilter.java:[47,13] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.healthcare.security.JwtAuthenticationFilter
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/PatientService.java:[30,30] cannot find symbol
+[ERROR]   symbol:   method getRole()
+[ERROR]   location: variable user of type com.healthcare.entity.User
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/PatientService.java:[41,17] cannot find symbol
+[ERROR]   symbol:   method setFullName(java.lang.String)
+[ERROR]   location: variable user of type com.healthcare.entity.User
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/PatientService.java:[44,17] cannot find symbol
+[ERROR]   symbol:   method setPhone(java.lang.String)
+[ERROR]   location: variable user of type com.healthcare.entity.User
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/PatientService.java:[47,17] cannot find symbol
+[ERROR]   symbol:   method setAddress(java.lang.String)
+[ERROR]   location: variable user of type com.healthcare.entity.User
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/PatientService.java:[50,17] cannot find symbol
+[ERROR]   symbol:   method setDateOfBirth(java.time.LocalDate)
+[ERROR]   location: variable user of type com.healthcare.entity.User
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/PatientService.java:[54,9] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.healthcare.service.PatientService
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/PatientService.java:[54,68] cannot find symbol
+[ERROR]   symbol:   method getUserId()
+[ERROR]   location: variable updated of type com.healthcare.entity.User
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/PatientService.java:[57,33] cannot find symbol
+[ERROR]   symbol:   method getRole()
+[ERROR]   location: variable updated of type com.healthcare.entity.User
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/PatientService.java:[65,39] cannot find symbol
+[ERROR]   symbol:   method getUserId()
+[ERROR]   location: variable user of type com.healthcare.entity.User
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/PatientService.java:[66,9] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.healthcare.service.PatientService
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/PatientService.java:[66,65] cannot find symbol
+[ERROR]   symbol:   method getUserId()
+[ERROR]   location: variable user of type com.healthcare.entity.User
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/MedicalRecordService.java:[36,52] cannot find symbol
+[ERROR]   symbol:   method builder()
+[ERROR]   location: class com.healthcare.entity.MedicalRecord
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/MedicalRecordService.java:[46,9] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.healthcare.service.MedicalRecordService
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/MedicalRecordService.java:[61,17] cannot find symbol
+[ERROR]   symbol:   method getUserId()
+[ERROR]   location: class com.healthcare.entity.User
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/MedicalRecordService.java:[75,19] cannot find symbol
+[ERROR]   symbol:   method setDiagnosis(java.lang.String)
+[ERROR]   location: variable record of type com.healthcare.entity.MedicalRecord
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/MedicalRecordService.java:[78,19] cannot find symbol
+[ERROR]   symbol:   method setPrescription(java.lang.String)
+[ERROR]   location: variable record of type com.healthcare.entity.MedicalRecord
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/MedicalRecordService.java:[81,19] cannot find symbol
+[ERROR]   symbol:   method setLabTests(java.lang.String)
+[ERROR]   location: variable record of type com.healthcare.entity.MedicalRecord
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/MedicalRecordService.java:[84,19] cannot find symbol
+[ERROR]   symbol:   method setFollowUpDate(java.time.LocalDate)
+[ERROR]   location: variable record of type com.healthcare.entity.MedicalRecord
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/MedicalRecordService.java:[88,9] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.healthcare.service.MedicalRecordService
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/MedicalRecordService.java:[95,19] cannot find symbol
+[ERROR]   symbol:   method getAppointment()
+[ERROR]   location: variable record of type com.healthcare.entity.MedicalRecord
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/MedicalRecordService.java:[96,59] cannot find symbol
+[ERROR]   symbol:   method getAppointment()
+[ERROR]   location: variable record of type com.healthcare.entity.MedicalRecord
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/AdminService.java:[38,42] cannot find symbol
+[ERROR]   symbol:   method getRole()
+[ERROR]   location: variable user of type com.healthcare.entity.User
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/AdminService.java:[49,31] cannot find symbol
+[ERROR]   symbol:   method getIsActive()
+[ERROR]   location: variable user of type com.healthcare.entity.User
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/AdminService.java:[51,9] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.healthcare.service.AdminService
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/AdminService.java:[51,84] cannot find symbol
+[ERROR]   symbol:   method getIsActive()
+[ERROR]   location: variable updated of type com.healthcare.entity.User
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/AdminService.java:[54,33] cannot find symbol
+[ERROR]   symbol:   method getRole()
+[ERROR]   location: variable updated of type com.healthcare.entity.User
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/AdminService.java:[64,9] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.healthcare.service.AdminService
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/AdminService.java:[93,34] cannot find symbol
+[ERROR]   symbol:   method builder()
+[ERROR]   location: class com.healthcare.dto.response.AdminStatsResponse
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/BillingService.java:[42,17] cannot find symbol
+[ERROR]   symbol:   method getUserId()
+[ERROR]   location: class com.healthcare.entity.User
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/BillingService.java:[55,13] cannot find symbol
+[ERROR]   symbol:   method setPaymentStatus(com.healthcare.enums.PaymentStatus)
+[ERROR]   location: variable bill of type com.healthcare.entity.Bill
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/BillingService.java:[56,13] cannot find symbol
+[ERROR]   symbol:   method setPaymentDate(java.time.LocalDateTime)
+[ERROR]   location: variable bill of type com.healthcare.entity.Bill
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/BillingService.java:[58,9] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.healthcare.service.BillingService
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/BillingService.java:[72,39] cannot find symbol
+[ERROR]   symbol:   method getPaymentStatus()
+[ERROR]   location: variable bill of type com.healthcare.entity.Bill
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/BillingService.java:[73,17] cannot find symbol
+[ERROR]   symbol:   method getAppointment()
+[ERROR]   location: variable bill of type com.healthcare.entity.Bill
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/BillingService.java:[74,43] cannot find symbol
+[ERROR]   symbol:   method getAppointment()
+[ERROR]   location: variable bill of type com.healthcare.entity.Bill
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/AuthService.java:[41,9] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.healthcare.service.AuthService
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/AuthService.java:[44,13] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.healthcare.service.AuthService
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/AuthService.java:[49,13] cannot find symbol
+[ERROR]   symbol:   method setFullName(java.lang.String)
+[ERROR]   location: variable user of type com.healthcare.entity.User
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/AuthService.java:[50,13] cannot find symbol
+[ERROR]   symbol:   method setEmail(java.lang.String)
+[ERROR]   location: variable user of type com.healthcare.entity.User
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/AuthService.java:[51,13] cannot find symbol
+[ERROR]   symbol:   method setPassword(java.lang.String)
+[ERROR]   location: variable user of type com.healthcare.entity.User
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/AuthService.java:[52,13] cannot find symbol
+[ERROR]   symbol:   method setPhone(java.lang.String)
+[ERROR]   location: variable user of type com.healthcare.entity.User
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/AuthService.java:[53,13] cannot find symbol
+[ERROR]   symbol:   method setIsActive(boolean)
+[ERROR]   location: variable user of type com.healthcare.entity.User
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/AuthService.java:[57,17] cannot find symbol
+[ERROR]   symbol:   method setRole(com.healthcare.enums.Role)
+[ERROR]   location: variable user of type com.healthcare.entity.User
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/AuthService.java:[63,9] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.healthcare.service.AuthService
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/AuthService.java:[63,71] cannot find symbol
+[ERROR]   symbol:   method getUserId()
+[ERROR]   location: variable savedUser of type com.healthcare.entity.User
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/AuthService.java:[65,22] cannot find symbol
+[ERROR]   symbol:   method getRole()
+[ERROR]   location: variable savedUser of type com.healthcare.entity.User
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/AuthService.java:[69,35] cannot find symbol
+[ERROR]   symbol:   method builder()
+[ERROR]   location: class com.healthcare.entity.Doctor
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/AuthService.java:[78,13] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.healthcare.service.AuthService
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/AuthService.java:[78,73] cannot find symbol
+[ERROR]   symbol:   method getUserId()
+[ERROR]   location: variable savedUser of type com.healthcare.entity.User
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/AuthService.java:[85,9] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.healthcare.service.AuthService
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/AuthService.java:[97,62] cannot find symbol
+[ERROR]   symbol:   method getUserId()
+[ERROR]   location: variable userPrincipal of type com.healthcare.security.UserPrincipal
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/AuthService.java:[100,38] cannot find symbol
+[ERROR]   symbol:   method getRole()
+[ERROR]   location: variable user of type com.healthcare.entity.User
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/AuthService.java:[102,13] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.healthcare.service.AuthService
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/AuthService.java:[111,13] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.healthcare.service.AuthService
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/DoctorService.java:[68,19] cannot find symbol
+[ERROR]   symbol:   method setBio(java.lang.String)
+[ERROR]   location: variable doctor of type com.healthcare.entity.Doctor
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/DoctorService.java:[71,19] cannot find symbol
+[ERROR]   symbol:   method setAvailabilityDays(java.lang.String)
+[ERROR]   location: variable doctor of type com.healthcare.entity.Doctor
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/DoctorService.java:[74,19] cannot find symbol
+[ERROR]   symbol:   method setAvailableFrom(java.time.LocalTime)
+[ERROR]   location: variable doctor of type com.healthcare.entity.Doctor
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/DoctorService.java:[77,19] cannot find symbol
+[ERROR]   symbol:   method setAvailableTo(java.time.LocalTime)
+[ERROR]   location: variable doctor of type com.healthcare.entity.Doctor
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/DoctorService.java:[81,9] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.healthcare.service.DoctorService
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/DoctorService.java:[81,69] cannot find symbol
+[ERROR]   symbol:   method getDoctorId()
+[ERROR]   location: variable updated of type com.healthcare.entity.Doctor
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/DoctorService.java:[90,15] cannot find symbol
+[ERROR]   symbol:   method setIsAvailable(java.lang.Boolean)
+[ERROR]   location: variable doctor of type com.healthcare.entity.Doctor
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/DoctorService.java:[92,9] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.healthcare.service.DoctorService
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/DoctorService.java:[97,19] cannot find symbol
+[ERROR]   symbol:   method getUser()
+[ERROR]   location: variable doctor of type com.healthcare.entity.Doctor
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/DoctorService.java:[98,52] cannot find symbol
+[ERROR]   symbol:   method getUser()
+[ERROR]   location: variable doctor of type com.healthcare.entity.Doctor
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/DoctorService.java:[99,46] cannot find symbol
+[ERROR]   symbol:   method getUser()
+[ERROR]   location: variable doctor of type com.healthcare.entity.Doctor
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/DoctorService.java:[101,79] cannot find symbol
+[ERROR]   symbol:   method getDoctorId()
+[ERROR]   location: variable doctor of type com.healthcare.entity.Doctor
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/security/UserPrincipal.java:[27,80] cannot find symbol
+[ERROR]   symbol:   method getRole()
+[ERROR]   location: variable user of type com.healthcare.entity.User
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/security/UserPrincipal.java:[26,21] cannot find symbol
+[ERROR]   symbol:   method getPassword()
+[ERROR]   location: variable user of type com.healthcare.entity.User
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/security/UserPrincipal.java:[25,21] cannot find symbol
+[ERROR]   symbol:   method getEmail()
+[ERROR]   location: variable user of type com.healthcare.entity.User
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/security/UserPrincipal.java:[24,21] cannot find symbol
+[ERROR]   symbol:   method getUserId()
+[ERROR]   location: variable user of type com.healthcare.entity.User
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/FeedbackService.java:[42,25] cannot find symbol
+[ERROR]   symbol:   method getPatient()
+[ERROR]   location: variable appointment of type com.healthcare.entity.Appointment
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/FeedbackService.java:[42,65] cannot find symbol
+[ERROR]   symbol:   method getUserId()
+[ERROR]   location: variable patient of type com.healthcare.entity.User
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/FeedbackService.java:[53,37] cannot find symbol
+[ERROR]   symbol:   method builder()
+[ERROR]   location: class com.healthcare.entity.Feedback
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/FeedbackService.java:[62,9] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.healthcare.service.FeedbackService
+[ERROR] /d:/project/healthcare-management/backend/src/main/java/com/healthcare/service/FeedbackService.java:[62,100] cannot find symbol
+[ERROR]   symbol:   method getUserId()
+[ERROR]   location: variable patient of type com.healthcare.entity.User
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException

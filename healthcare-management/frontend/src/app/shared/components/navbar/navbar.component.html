@@ -1,0 +1,61 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">
+      <i class="bi bi-hospital"></i> Healthcare Management
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item" *ngIf="userRole === 'PATIENT'">
+          <a class="nav-link" routerLink="/patient/dashboard" routerLinkActive="active">Dashboard</a>
+        </li>
+        <li class="nav-item" *ngIf="userRole === 'PATIENT'">
+          <a class="nav-link" routerLink="/patient/find-doctor" routerLinkActive="active">Find Doctor</a>
+        </li>
+        <li class="nav-item" *ngIf="userRole === 'PATIENT'">
+          <a class="nav-link" routerLink="/patient/appointments" routerLinkActive="active">Appointments</a>
+        </li>
+        <li class="nav-item" *ngIf="userRole === 'PATIENT'">
+          <a class="nav-link" routerLink="/patient/billing" routerLinkActive="active">Billing</a>
+        </li>
+        
+        <li class="nav-item" *ngIf="userRole === 'DOCTOR'">
+          <a class="nav-link" routerLink="/doctor/dashboard" routerLinkActive="active">Dashboard</a>
+        </li>
+        <li class="nav-item" *ngIf="userRole === 'DOCTOR'">
+          <a class="nav-link" routerLink="/doctor/appointments" routerLinkActive="active">Appointments</a>
+        </li>
+        <li class="nav-item" *ngIf="userRole === 'DOCTOR'">
+          <a class="nav-link" routerLink="/doctor/schedule" routerLinkActive="active">Schedule</a>
+        </li>
+        
+        <li class="nav-item" *ngIf="userRole === 'ADMIN'">
+          <a class="nav-link" routerLink="/admin/dashboard" routerLinkActive="active">Dashboard</a>
+        </li>
+        <li class="nav-item" *ngIf="userRole === 'ADMIN'">
+          <a class="nav-link" routerLink="/admin/users" routerLinkActive="active">Users</a>
+        </li>
+        <li class="nav-item" *ngIf="userRole === 'ADMIN'">
+          <a class="nav-link" routerLink="/admin/doctors" routerLinkActive="active">Doctors</a>
+        </li>
+        <li class="nav-item" *ngIf="userRole === 'ADMIN'">
+          <a class="nav-link" routerLink="/admin/reports" routerLinkActive="active">Reports</a>
+        </li>
+        
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown">
+            <i class="bi bi-person-circle"></i> {{ userEmail }}
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+            <li><a class="dropdown-item" href="#" *ngIf="userRole === 'PATIENT'" routerLink="/patient/profile">Profile</a></li>
+            <li><a class="dropdown-item" href="#" *ngIf="userRole === 'DOCTOR'" routerLink="/doctor/profile">Profile</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#" (click)="logout()">Logout</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

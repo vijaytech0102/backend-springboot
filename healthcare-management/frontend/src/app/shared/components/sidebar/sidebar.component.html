@@ -1,0 +1,16 @@
+<div class="sidebar" [class.collapse]="isCollapsed">
+  <div class="sidebar-header">
+    <h5>Menu</h5>
+    <button class="collapse-btn" (click)="toggleCollapse()">
+      <i [class]="isCollapsed ? 'bi bi-chevron-right' : 'bi bi-chevron-left'"></i>
+    </button>
+  </div>
+  <nav class="sidebar-nav">
+    <a href="#" class="nav-link" *ngFor="let link of menuLinks" 
+       [routerLink]="link.path" routerLinkActive="active"
+       [title]="isCollapsed ? link.label : ''">
+      <i [class]="'bi ' + link.icon"></i>
+      <span *ngIf="!isCollapsed">{{ link.label }}</span>
+    </a>
+  </nav>
+</div>

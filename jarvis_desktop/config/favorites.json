@@ -1,0 +1,11 @@
+# Windows Desktop Jarvis Application Configuration
+
+{
+    "spotify": "C:\\Users\\YourUsername\\AppData\\Roaming\\Spotify\\spotify.exe",
+    "discord": "C:\\Users\\YourUsername\\AppData\\Local\\Discord\\app-1.x.x\\Discord.exe",
+    "vscode": "C:\\Program Files\\Microsoft VS Code\\Code.exe",
+    "chrome": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+    "vlc": "C:\\Program Files\\VideoLAN\\VLC\\vlc.exe",
+    "notepad": "C:\\Windows\\System32\\notepad.exe",
+    "calculator": "C:\\Windows\\System32\\calc.exe"
+}

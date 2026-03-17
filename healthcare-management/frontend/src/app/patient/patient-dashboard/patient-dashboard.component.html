@@ -1,0 +1,78 @@
+<div class="dashboard-container">
+  <h1 class="mb-4">Patient Dashboard</h1>
+  
+  <div class="row mb-4">
+    <div class="col-md-3 mb-3">
+      <div class="stat-card">
+        <i class="bi bi-calendar-event"></i>
+        <h5>{{ upcomingAppointments }}</h5>
+        <p>Upcoming Appointments</p>
+      </div>
+    </div>
+    <div class="col-md-3 mb-3">
+      <div class="stat-card">
+        <i class="bi bi-file-text"></i>
+        <h5>{{ totalRecords }}</h5>
+        <p>Medical Records</p>
+      </div>
+    </div>
+    <div class="col-md-3 mb-3">
+      <div class="stat-card">
+        <i class="bi bi-wallet2"></i>
+        <h5>${{ pendingBills }}</h5>
+        <p>Outstanding Bills</p>
+      </div>
+    </div>
+    <div class="col-md-3 mb-3">
+      <div class="stat-card">
+        <i class="bi bi-person"></i>
+        <h5>{{ totalDoctors }}</h5>
+        <p>Consultations Done</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-8">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="mb-0">Upcoming Appointments</h5>
+        </div>
+        <div class="card-body">
+          <div *ngIf="appointments.length === 0" class="alert alert-info">
+            No upcoming appointments. <a routerLink="/patient/find-doctor">Book now</a>
+          </div>
+          <div *ngFor="let apt of appointments.slice(0, 5)" class="appointment-item">
+            <div class="appointment-info">
+              <h6>{{ apt.doctor.user.fullName }}</h6>
+              <p class="text-muted">{{ apt.appointmentDate | date: 'MMM d, yyyy' }} at {{ apt.appointmentTime }}</p>
+              <small>Status: <span [class]="'badge badge-' + getStatusColor(apt.status)">{{ apt.status }}</span></small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-4">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="mb-0">Quick Actions</h5>
+        </div>
+        <div class="card-body">
+          <button class="btn btn-primary w-100 mb-2" routerLink="/patient/find-doctor">
+            <i class="bi bi-search"></i> Find & Book Doctor
+          </button>
+          <button class="btn btn-info w-100 mb-2" routerLink="/patient/appointments">
+            <i class="bi bi-calendar"></i> View All Appointments
+          </button>
+          <button class="btn btn-warning w-100 mb-2" routerLink="/patient/billing">
+            <i class="bi bi-wallet2"></i> Payment & Billing
+          </button>
+          <button class="btn btn-secondary w-100" routerLink="/patient/profile">
+            <i class="bi bi-person"></i> Update Profile
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

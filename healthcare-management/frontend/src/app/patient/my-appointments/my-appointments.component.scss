@@ -1,0 +1,97 @@
+.appointments-container {
+  padding: 20px;
+}
+
+.tab-filters {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+
+  .btn {
+    padding: 8px 16px;
+    border: 2px solid #ddd;
+    background: white;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &.active {
+      background: #667eea;
+      color: white;
+      border-color: #667eea;
+    }
+
+    &:hover:not(.active) {
+      border-color: #667eea;
+      color: #667eea;
+    }
+  }
+}
+
+.appointment-list {
+  display: grid;
+  gap: 20px;
+}
+
+.appointment-card {
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+
+  &:hover {
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+  }
+
+  .appointment-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    h5 {
+      margin: 0;
+    }
+
+    .specialisation {
+      color: #667eea;
+      font-size: 0.9rem;
+      margin: 5px 0 0;
+    }
+  }
+
+  .appointment-details {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin: 15px 0;
+
+    .detail-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      i {
+        color: #667eea;
+        font-size: 1.2rem;
+      }
+    }
+  }
+
+  .appointment-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+
+    .btn {
+      flex: 1;
+      padding: 8px 12px;
+      font-size: 0.85rem;
+    }
+  }
+}
+
+.badge {
+  padding: 8px 12px;
+  font-size: 0.8rem;
+}

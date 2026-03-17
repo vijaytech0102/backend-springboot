@@ -1,0 +1,60 @@
+<div class="login-container">
+  <div class="login-card">
+    <div class="login-logo">
+      <i class="bi bi-hospital"></i>
+      <h2>Healthcare Management</h2>
+      <p>Patient Portal & Appointment System</p>
+    </div>
+
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <div class="mb-3">
+        <label for="email" class="form-label">Email Address</label>
+        <input 
+          type="email" 
+          class="form-control" 
+          id="email"
+          formControlName="email"
+          placeholder="Enter your email"
+          [class.is-invalid]="isFieldInvalid('email')">
+        <div class="invalid-feedback" *ngIf="isFieldInvalid('email')">
+          Please enter a valid email address
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input 
+          type="password" 
+          class="form-control" 
+          id="password"
+          formControlName="password"
+          placeholder="Enter your password"
+          [class.is-invalid]="isFieldInvalid('password')">
+        <div class="invalid-feedback" *ngIf="isFieldInvalid('password')">
+          Password is required
+        </div>
+      </div>
+
+      <button class="btn btn-primary w-100 mb-3" type="submit" [disabled]="isLoading">
+        <span *ngIf="!isLoading">Login</span>
+        <span *ngIf="isLoading">
+          <span class="spinner-border spinner-border-sm me-2"></span>
+          Logging in...
+        </span>
+      </button>
+    </form>
+
+    <div class="signup-link">
+      <p>Don't have an account? <a routerLink="/register">Sign up here</a></p>
+    </div>
+
+    <div class="demo-credentials mt-4 p-3 bg-light rounded">
+      <small>
+        <strong>Demo Credentials:</strong><br>
+        <em>Patient:</em> patient@example.com / Patient@123<br>
+        <em>Doctor:</em> doctor1@example.com / Doctor@123<br>
+        <em>Admin:</em> admin@example.com / Admin@123
+      </small>
+    </div>
+  </div>
+</div>

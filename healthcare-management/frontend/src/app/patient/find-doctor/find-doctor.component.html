@@ -1,0 +1,111 @@
+<div class="find-doctor-container">
+  <h1 class="mb-4">Find & Book Doctor</h1>
+
+  <div class="filter-section mb-4">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>Search Doctor</label>
+          <input 
+            type="text" 
+            class="form-control"
+            placeholder="Enter doctor name"
+            [(ngModel)]="searchQuery"
+            (input)="filterDoctors()">
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>Specialisation</label>
+          <select 
+            class="form-control"
+            [(ngModel)]="selectedSpecialisation"
+            (change)="filterDoctors()">
+            <option value="">All Specialisations</option>
+            <option value="Cardiology">Cardiology</option>
+            <option value="Neurology">Neurology</option>
+            <option value="Orthopedics">Orthopedics</option>
+            <option value="Dermatology">Dermatology</option>
+            <option value="Pediatrics">Pediatrics</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4 mb-3" *ngFor="let doctor of filteredDoctors">
+      <div class="doctor-card">
+        <div class="doctor-header">
+          <i class="bi bi-person-circle"></i>
+          <span class="badge" [class.badge-success]="doctor.isAvailable" 
+                [class.badge-danger]="!doctor.isAvailable">
+            {{ doctor.isAvailable ? 'Available' : 'Unavailable' }}
+          </span>
+        </div>
+        <h5>{{ doctor.user.fullName }}</h5>
+        <p class="specialisation">{{ doctor.specialisation }}</p>
+        <p class="qualification"><small>{{ doctor.qualification }}</small></p>
+        <div class="rating">
+          <app-star-rating [value]="doctor.averageRating || 0" [readonly]="true"></app-star-rating>
+          <small class="text-muted">({{ doctor.averageRating || 0 }}/5)</small>
+        </div>
+        <hr>
+        <p class="fee">Consultation Fee: <strong>${{ doctor.consultationFee }}</strong></p>
+        <p class="experience"><small>{{ doctor.experienceYears }} years exp.</small></p>
+        <button class="btn btn-primary w-100" (click)="bookAppointment(doctor)" 
+                [disabled]="!doctor.isAvailable">
+          <i class="bi bi-calendar-plus"></i> Book Appointment
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="filteredDoctors.length === 0" class="alert alert-info">
+    No doctors found matching your criteria.
+  </div>
+
+  <!-- Booking Modal -->
+  <div class="modal" [class.show]="showBookingModal" [style.display]="showBookingModal ? 'block' : 'none'">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Book Appointment</h5>
+          <button type="button" class="btn-close" (click)="closeModal()"></button>
+        </div>
+        <form [formGroup]="bookingForm" (ngSubmit)="submitBooking()">
+          <div class="modal-body">
+            <p><strong>Doctor:</strong> {{ selectedDoctor?.user.fullName }}</p>
+            
+            <div class="mb-3">
+              <label class="form-label">Appointment Date</label>
+              <input type="date" class="form-control" formControlName="appointmentDate" required>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Appointment Time</label>
+              <input type="time" class="form-control" formControlName="appointmentTime" required>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Reason for Visit</label>
+              <textarea class="form-control" formControlName="reason" rows="3" required></textarea>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Additional Notes</label>
+              <textarea class="form-control" formControlName="notes" rows="2"></textarea>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" (click)="closeModal()">Cancel</button>
+            <button type="submit" class="btn btn-primary" [disabled]="isBooking">
+              {{ isBooking ? 'Booking...' : 'Confirm Booking' }}
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="modal-backdrop" *ngIf="showBookingModal" [class.show]="showBookingModal"></div>
+</div>

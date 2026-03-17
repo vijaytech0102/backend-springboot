@@ -1,0 +1,58 @@
+<div class="billing-container">
+  <h1 class="mb-4">Billing & Payments</h1>
+  
+  <div class="billing-stats">
+    <div class="stat">
+      <h6>Total Amount Due</h6>
+      <h2>${{ totalDue }}</h2>
+    </div>
+    <div class="stat">
+      <h6>Total Paid</h6>
+      <h2>${{ totalPaid }}</h2>
+    </div>
+  </div>
+
+  <div *ngIf="bills.length === 0" class="alert alert-info">
+    No billing records found.
+  </div>
+
+  <div class="bills-list">
+    <div class="bill-card" *ngFor="let bill of bills">
+      <div class="bill-header">
+        <div>
+          <h5>Appointment on {{ bill.appointment?.appointmentDate | date: 'MMM d, yyyy' }}</h5>
+          <p>Dr. {{ bill.appointment?.doctor?.user?.fullName }}</p>
+        </div>
+        <span [class]="'badge badge-' + (bill.paymentStatus === 'PAID' ? 'success' : 'warning')">
+          {{ bill.paymentStatus }}
+        </span>
+      </div>
+      <hr>
+      <div class="bill-details">
+        <div class="detail">
+          <label>Consultation Fee:</label>
+          <span>${{ bill.consultationFee }}</span>
+        </div>
+        <div class="detail" *ngIf="bill.additionalCharges">
+          <label>Additional Charges:</label>
+          <span>${{ bill.additionalCharges }}</span>
+        </div>
+        <div class="detail" *ngIf="bill.discount">
+          <label>Discount:</label>
+          <span>-${{ bill.discount }}</span>
+        </div>
+        <div class="detail total">
+          <label>Total Amount:</label>
+          <span>${{ bill.totalAmount }}</span>
+        </div>
+      </div>
+      <button class="btn btn-success w-100 mt-3" *ngIf="bill.paymentStatus === 'UNPAID'" 
+              (click)="payBill(bill.billId)">
+        <i class="bi bi-credit-card"></i> Pay Now
+      </button>
+      <p class="text-success mt-3" *ngIf="bill.paymentStatus === 'PAID'">
+        <i class="bi bi-check-circle"></i> Paid on {{ bill.paymentDate | date: 'MMM d, yyyy' }}
+      </p>
+    </div>
+  </div>
+</div>

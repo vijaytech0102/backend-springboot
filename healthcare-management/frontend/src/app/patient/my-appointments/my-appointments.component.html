@@ -1,0 +1,47 @@
+<div class="appointments-container">
+  <h1 class="mb-4">My Appointments</h1>
+
+  <div class="tab-filters mb-4">
+    <button class="btn" [class.active]="selectedTab === 'all'" (click)="selectedTab = 'all'">All</button>
+    <button class="btn" [class.active]="selectedTab === 'upcoming'" (click)="selectedTab = 'upcoming'">Upcoming</button>
+    <button class="btn" [class.active]="selectedTab === 'completed'" (click)="selectedTab = 'completed'">Completed</button>
+    <button class="btn" [class.active]="selectedTab === 'cancelled'" (click)="selectedTab = 'cancelled'">Cancelled</button>
+  </div>
+
+  <div *ngIf="filteredAppointments.length === 0" class="alert alert-info">
+    No appointments found in this category. <a routerLink="/patient/find-doctor">Book an appointment now</a>
+  </div>
+
+  <div class="appointment-list">
+    <div class="appointment-card" *ngFor="let apt of filteredAppointments">
+      <div class="appointment-header">
+        <div>
+          <h5>{{ apt.doctor.user.fullName }}</h5>
+          <p class="specialisation">{{ apt.doctor.specialisation }}</p>
+        </div>
+        <span [class]="'badge badge-' + getStatusColor(apt.status)">{{ apt.status }}</span>
+      </div>
+      <hr>
+      <div class="appointment-details">
+        <div class="detail-item">
+          <i class="bi bi-calendar-event"></i>
+          <span>{{ apt.appointmentDate | date: 'MMM d, yyyy' }}</span>
+        </div>
+        <div class="detail-item">
+          <i class="bi bi-clock"></i>
+          <span>{{ apt.appointmentTime }}</span>
+        </div>
+        <div class="detail-item">
+          <i class="bi bi-chat-dots"></i>
+          <span>{{ apt.reason }}</span>
+        </div>
+      </div>
+      <div class="appointment-actions">
+        <button class="btn btn-sm btn-info" routerLink="/patient/records">View Records</button>
+        <button class="btn btn-sm btn-warning" *ngIf="apt.status === 'COMPLETED'">Leave Feedback</button>
+        <button class="btn btn-sm btn-danger" *ngIf="apt.status === 'PENDING' || apt.status === 'CONFIRMED'" 
+                (click)="cancelAppointment(apt.appointmentId)">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>

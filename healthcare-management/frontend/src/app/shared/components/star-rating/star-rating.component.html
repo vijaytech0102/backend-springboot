@@ -1,0 +1,9 @@
+<div class="star-rating">
+  <i *ngFor="let star of stars; let idx = index" 
+     class="bi" 
+     [class.bi-star-fill]="idx < value"
+     [class.bi-star]="idx >= value"
+     (click)="onStarClick(idx + 1)">
+  </i>
+  <span class="rating-value" *ngIf="value > 0">{{ value }}/5</span>
+</div>

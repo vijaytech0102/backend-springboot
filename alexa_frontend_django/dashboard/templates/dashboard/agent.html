@@ -1,0 +1,73 @@
+{% extends 'dashboard/base.html' %}
+
+{% block title %}Agent Communication - Alexa Dashboard{% endblock %}
+
+{% block content %}
+<div class="py-4">
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <h2><i class="bi bi-robot"></i> Agent Communication</h2>
+            <p class="text-muted">Have intelligent, context-aware conversations with your AI agent</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <div class="card shadow">
+                <div class="card-body conversation-area">
+                    {% if conversations %}
+                        <div class="conversation-history mb-4" style="max-height: 500px; overflow-y: auto;">
+                            {% for conv in conversations %}
+                            <div class="mb-4">
+                                <div class="user-message bg-primary text-white p-3 rounded" style="margin-left: 10%; margin-right: 0;">
+                                    <small class="text-white-50">{{ conv.timestamp|date:"M d, H:i" }}</small>
+                                    <p class="mb-0 mt-1">{{ conv.user_message }}</p>
+                                </div>
+                                <div class="alexa-message bg-light p-3 rounded mt-2" style="margin-left: 0; margin-right: 10%;">
+                                    <strong class="text-danger">
+                                        <i class="bi bi-robot"></i> Agent
+                                    </strong>
+                                    <p class="mb-0 mt-2">{{ conv.alexa_response }}</p>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        <div class="text-center text-muted py-5">
+                            <i class="bi bi-robot" style="font-size: 3rem;"></i>
+                            <p class="mt-3">Start a conversation with your AI agent below</p>
+                        </div>
+                    {% endif %}
+                </div>
+
+                <div class="card-footer">
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="input-group">
+                            {{ form.message }}
+                            <button class="btn btn-danger" type="submit">
+                                <i class="bi bi-send"></i> Send
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="card mt-4 bg-light">
+                <div class="card-header bg-danger text-white">
+                    <h6 class="mb-0"><i class="bi bi-lightbulb"></i> Conversation Tips</h6>
+                </div>
+                <div class="card-body small">
+                    <ul>
+                        <li>Share your feelings or concerns - the agent responds with empathy</li>
+                        <li>Ask follow-up questions - the agent remembers context</li>
+                        <li>Have multi-turn discussions about complex topics</li>
+                        <li>The agent adapts responses based on your sentiment</li>
+                        <li>Share goals or challenges - get personalized guidance</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

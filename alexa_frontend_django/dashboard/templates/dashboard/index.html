@@ -1,0 +1,115 @@
+{% extends 'dashboard/base.html' %}
+
+{% block title %}Home - Alexa Dashboard{% endblock %}
+
+{% block content %}
+<div class="py-5">
+    <div class="row mb-4">
+        <div class="col-md-8 mx-auto">
+            <div class="card border-primary shadow-lg">
+                <div class="card-body text-center py-5">
+                    <i class="bi bi-mic-fill text-primary" style="font-size: 4rem;"></i>
+                    <h1 class="card-title mt-3">Welcome to Alexa Voice AI</h1>
+                    <p class="card-text lead text-muted">
+                        Your intelligent voice assistant dashboard with 5 capability domains
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row g-4 mb-4">
+        <div class="col-md-6 col-lg-4">
+            <div class="card h-100 hover-card">
+                <div class="card-body">
+                    <i class="bi bi-chat-fill text-info" style="font-size: 2rem;"></i>
+                    <h5 class="card-title mt-3">Chat Interface</h5>
+                    <p class="card-text">Have a natural conversation with your AI assistant</p>
+                    <a href="{% url 'chat_interface' %}" class="btn btn-info btn-sm">Start Chat</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+            <div class="card h-100 hover-card">
+                <div class="card-body">
+                    <i class="bi bi-lightbulb text-warning" style="font-size: 2rem;"></i>
+                    <h5 class="card-title mt-3">Information & Q&A</h5>
+                    <p class="card-text">Ask questions and get instant answers from Claude AI</p>
+                    <a href="{% url 'information_qa' %}" class="btn btn-warning btn-sm">Ask Question</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+            <div class="card h-100 hover-card">
+                <div class="card-body">
+                    <i class="bi bi-house-fill text-success" style="font-size: 2rem;"></i>
+                    <h5 class="card-title mt-3">Smart Home</h5>
+                    <p class="card-text">Control your smart home devices with voice commands</p>
+                    <a href="{% url 'smart_home_control' %}" class="btn btn-success btn-sm">Control</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+            <div class="card h-100 hover-card">
+                <div class="card-body">
+                    <i class="bi bi-check2-circle text-primary" style="font-size: 2rem;"></i>
+                    <h5 class="card-title mt-3">Tasks & Reminders</h5>
+                    <p class="card-text">Create tasks and set reminders to stay organized</p>
+                    <a href="{% url 'task_management' %}" class="btn btn-primary btn-sm">Manage</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+            <div class="card h-100 hover-card">
+                <div class="card-body">
+                    <i class="bi bi-diagram-3 text-secondary" style="font-size: 2rem;"></i>
+                    <h5 class="card-title mt-3">Workflows</h5>
+                    <p class="card-text">Execute custom business workflows and automations</p>
+                    <a href="{% url 'business_workflows' %}" class="btn btn-secondary btn-sm">Execute</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+            <div class="card h-100 hover-card">
+                <div class="card-body">
+                    <i class="bi bi-robot text-danger" style="font-size: 2rem;"></i>
+                    <h5 class="card-title mt-3">Agent Communication</h5>
+                    <p class="card-text">Have a deep conversation with the AI agent</p>
+                    <a href="{% url 'agent_communication' %}" class="btn btn-danger btn-sm">Communicate</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col-md-8 mx-auto">
+            <div class="card bg-light">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0"><i class="bi bi-info-circle"></i> How to Use</h5>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <strong>1. Flask Backend:</strong> The skill is running on <code>http://localhost:5000</code>
+                        </li>
+                        <li class="list-group-item">
+                            <strong>2. Connect to Alexa:</strong> Use ngrok to expose the backend to the cloud
+                        </li>
+                        <li class="list-group-item">
+                            <strong>3. Ask Alexa:</strong> "Alexa, open [skill name]" to start using the skill
+                        </li>
+                        <li class="list-group-item">
+                            <strong>4. This Frontend:</strong> Test all features from this dashboard before trying voice
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
