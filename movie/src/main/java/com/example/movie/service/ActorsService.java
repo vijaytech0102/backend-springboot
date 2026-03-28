@@ -20,5 +20,16 @@ public Actors saveActors(Actors actors)
  return obj;
 }
 
+public Actors findActorById(Long id)
+{
+    Actors obj=actorRepository.findById(id).orElse(null);
+    return obj;
+}
+
+public String deleteActorById(Long id)
+{
+    actorRepository.deleteById(id);
+    return "Deleted succesfully";
+}
 }
 
