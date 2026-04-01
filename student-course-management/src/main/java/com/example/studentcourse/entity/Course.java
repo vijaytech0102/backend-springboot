@@ -1,9 +1,23 @@
 package com.example.studentcourse.entity;
 
-import jakarta.persistence.*;
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.PrePersist;
+import jakarta.persistence.PreUpdate;
+import jakarta.persistence.Table;
 
 /**
  * Course Entity Class
@@ -136,6 +150,120 @@ public class Course {
      *   course.getStudents().add(student);  // ✗ WRONG - modifies Course side (inverse side)
      *   courseRepository.save(course);      // Relationship is NOT persisted to database
      */
+    /**
+     * JSON SERIALIZATION ANNOTATIONS - @JsonBackReference:
+     * =====================================================
+     * 
+     * @JsonBackReference(value = "student_courses"):
+     * 
+     * Purpose:
+     * - Prevents this field from being serialized to JSON
+     * - Part of a bidirectional relationship pair with @JsonManagedReference
+     * - Avoids INFINITE CIRCULAR REFERENCE in JSON output
+     * 
+     * Why It's Needed:
+     * Without @JsonBackReference, serializing a Course would cause:
+     *   Course → includes students → each Student → includes courses → includes Course AGAIN
+     *   This creates infinite recursion → Stack overflow!
+     * 
+     * How It Works:
+     * The value "student_courses" MUST MATCH the @JsonManagedReference value in Student.java
+     * This pairing tells Jackson:
+     *   - MANAGED SIDE (Student.courses): Serialize to JSON ✓
+     *   - BACK REFERENCE SIDE (Course.students): Do NOT serialize ✗
+     * 
+     * Data Flow in JSON:
+     *   When serializing Student.getCourses() → includes Course objects
+     *   When serializing those Course objects → students field is SKIPPED (circular reference prevented!)
+     * 
+     * Example JSON Output:
+     *   When Course is serialized directly:
+     *   {
+     *     "id": 101,
+     *     "courseName": "Java Programming",
+     *     "students": null  // ← NOT included due to @JsonBackReference
+     *   }
+     * 
+     *   When Course is serialized as part of Student:
+     *   {
+     *     "id": 1,
+     *     "name": "John",
+     *     "courses": [
+     *       {
+     *         "id": 101,
+     *         "courseName": "Java Programming"
+     *         // students field is NOT here (prevents circular reference)
+     *       }
+     *     ]
+     *   }
+     * 
+     * IMPORTANT RULES:
+     * - MUST have matching value with @JsonManagedReference in Student.courses
+     * - Always placed on the INVERSE side of @ManyToMany (where mappedBy is used)
+     * - Do NOT remove this annotation (will cause infinite JSON loops)
+     * - If value doesn't match Student's annotation, serialization won't work correctly
+     */
+    /**
+     * WHAT IS value = "student_courses"?
+     * 
+     * It's a LABEL/IDENTIFIER that pairs this @JsonBackReference with the matching
+     * @JsonManagedReference in Student.java. Think of it as a "connection tag" or
+     * "reference name" that tells Jackson: "This back reference is paired with the
+     * managed reference that has the same value."
+     * 
+     * HOW IT WORKS:
+     * ===============
+     * value = "student_courses" (in Course.java @JsonBackReference)
+     *         ↓ MUST MATCH ↓
+     * value = "student_courses" (in Student.java @JsonManagedReference)
+     * 
+     * When Jackson serializes, it:
+     *   1. Looks at Student with @JsonManagedReference("student_courses")
+     *   2. Serializes the courses field (includes it in JSON)
+     *   3. For each Course, looks for @JsonBackReference("student_courses")
+     *   4. Finds the match! → Jackson SKIPS serializing the students field
+     *   5. Result: No infinite loop ✓
+     * 
+     * NAMING CONVENTION:
+     * ==================
+     * Use descriptive names that show the relationship:
+     *   - "student_courses" ← Shows relationship between students and courses
+     *   - "author_books" ← Shows relationship between authors and books
+     *   - "teacher_students" ← Shows relationship between teachers and students
+     *   - "employer_employees" ← Shows relationship between employers and employees
+     * 
+     * WHAT IF VALUES DON'T MATCH?
+     * =============================
+     * If you write:
+     *   Student: @JsonManagedReference("student_courses")
+     *   Course: @JsonBackReference("course_students")  ← Different value!
+     * 
+     * Result: Jackson doesn't recognize them as a pair
+     *         → Circular reference NOT prevented
+     *         → Infinite JSON loop
+     *         → Stack overflow error
+     * 
+     * EXAMPLE:
+     * ========
+     * Correct Pairing:
+     *   Student.java:  @JsonManagedReference(value = "student_courses")
+     *   Course.java:   @JsonBackReference(value = "student_courses")
+     *   Status: ✓ WORKS - Jackson recognizes the pair
+     * 
+     * Wrong Pairing:
+     *   Student.java:  @JsonManagedReference(value = "student_courses")
+     *   Course.java:   @JsonBackReference(value = "different_value")
+     *   Status: ✗ BROKEN - Jackson doesn't match them → infinite loop
+     * 
+     * KEY RULES TO REMEMBER:
+     * ======================
+     * 1. The value MUST be identical in both @JsonManagedReference and @JsonBackReference
+     * 2. If you change it in one place, ALWAYS change it in the other
+     * 3. Use meaningful names that describe the relationship
+     * 4. Two annotations with same value = ONE complete pair
+     */
+    @JsonIgnore
+    @JsonBackReference(value = "student_courses")  // ← Paired with Student.courses
     @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY, mappedBy = "courses")
     private Set<Student> students = new HashSet<>();
 

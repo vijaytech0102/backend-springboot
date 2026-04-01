@@ -2,7 +2,6 @@ package com.example.studentcourse.service;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -32,14 +31,92 @@ import com.example.studentcourse.repository.StudentRepository;
 @Service
 public class CourseService {
 
-    // Dependency injections
-    // @Autowired
+    // ========================================================================================
+    // DEPENDENCY INJECTION (DI) EXPLANATION
+    // ========================================================================================
+    // 
+    // This class demonstrates CONSTRUCTOR INJECTION - the BEST PRACTICE for Spring DI
+    // 
+    // WHAT IS DEPENDENCY INJECTION?
+    // =============================
+    // DI is a design pattern where a class receives its dependencies from external sources
+    // rather than creating them itself. This promotes loose coupling and testability.
+    // 
+    // Instead of: private CourseRepository repo = new CourseRepository();  ❌ WRONG
+    // We use:    CourseService(CourseRepository repo) { this.repo = repo; }  ✅ RIGHT
+    // 
+    // HOW SPRING INJECTS DEPENDENCIES:
+    // =================================
+    // 1. Spring sees @Service annotation → Marks this as a bean to manage
+    // 2. Spring scans constructor parameters → Sees CourseRepository and StudentRepository
+    // 3. Spring looks for matching beans → Finds @Repository classes
+    // 4. Spring creates instances → Instantiates the repositories (since they're beans)
+    // 5. Spring injects them → Passes to this constructor automatically
+    // 6. Result → This service has access to both repositories without creating them!
+    // 
+    // WHY CONSTRUCTOR INJECTION (BEST PRACTICE)?
+    // ==========================================
+    // • Dependencies are IMMUTABLE (marked as 'final') - cannot be changed after creation
+    // • Dependencies are VISIBLE - clearly shown in constructor signature
+    // • Easy to TEST - just pass mock objects to constructor in unit tests
+    // • All dependencies available immediately after instantiation
+    // • No coupling to Spring Framework (could work with any DI framework)
+    // 
+    // ALTERNATIVE APPROACHES (NOT USED HERE):
+    // =========================================
+    // 
+    // 1. FIELD INJECTION (Commented out below - not recommended):
+    //    @Autowired
+    //    private CourseRepository courseRepository;
+    //    Problems:
+    //    - Not immutable (can be changed anytime)
+    //    - Hard to test (need Spring to inject)
+    //    - Dependencies hidden (not visible at construction)
+    //    - Tight coupling to Spring (@Autowired is Spring-specific)
+    // 
+    // 2. SETTER INJECTION:
+    //    public void setCourseRepository(CourseRepository repo) { this.courseRepository = repo; }
+    //    Problems:
+    //    - Dependencies optional (might not be set)
+    //    - Not immutable
+    //    - Order of setters matters
+    //    - Harder to ensure object is in valid state
+    // 
+
+    // Repository dependencies injected via constructor
+    // These are IMMUTABLE (final) - set once during construction, never changes
     private final CourseRepository courseRepository;
     
-    // @Autowired
+    // Another repository dependency
+    // Spring will automatically find and inject the StudentRepository bean
     private final StudentRepository studentRepository;
-
+    
+    /**
+     * CONSTRUCTOR INJECTION - Spring automatically calls this
+     * 
+     * How Spring uses this constructor:
+     * 1. Spring sees this constructor needs CourseRepository and StudentRepository
+     * 2. Spring looks for beans that implement these interfaces
+     * 3. Spring finds @Repository classes (in repository package) that match
+     * 4. Spring creates instances of those repositories
+     * 5. Spring calls this constructor and passes the repository instances
+     * 6. The repositories are now available throughout this service
+     * 
+     * The constructor parameters act as DEPENDENCY DECLARATIONS:
+     * "This service REQUIRES CourseRepository and StudentRepository to function"
+     * 
+     * Benefits of declaring dependencies in constructor:
+     * - Makes it clear what this class depends on
+     * - Spring validates all dependencies exist (fails fast if missing)
+     * - Easy to test: new CourseService(mockCourseRepo, mockStudentRepo)
+     * - Immutable: repositories can't be changed after object creation
+     * 
+     * @param courseRepository The CourseRepository bean (injected by Spring)
+     * @param studentRepository The StudentRepository bean (injected by Spring)
+     */
     public CourseService(CourseRepository courseRepository, StudentRepository studentRepository) {
+        // Spring sets these values before the object is fully constructed
+        // These are now available for all methods in this service
         this.courseRepository = courseRepository;
         this.studentRepository = studentRepository;
     }
@@ -50,13 +127,24 @@ public class CourseService {
      * Exception Handling Demo:
      * - Throws DuplicateResourceException if course code already exists
      * 
+     * DEPENDENCY INJECTION IN ACTION:
+     * ===============================
+     * This method uses courseRepository (injected in constructor).
+     * The repository was automatically provided by Spring's DI container,
+     * so we can just call its methods without creating it ourselves.
+     * 
+     * Benefits here:
+     * - If we need to change repository implementation, we only change @Repository class
+     * - Easy to test by passing a mock repository
+     * - Service doesn't know HOW the repository works, just THAT it works
+     * 
      * @param course The course to create
      * @return The created course with generated ID
      * @throws DuplicateResourceException if course code already exists
      */
     @Transactional
     public Course createCourse(Course course) {
-        // Check if course with this code already exists
+        // courseRepository is available here because it was injected in constructor
         if (courseRepository.existsByCourseCode(course.getCourseCode())) {
             throw new DuplicateResourceException(
                     "Course with code '" + course.getCourseCode() + "' already exists!"
@@ -64,6 +152,7 @@ public class CourseService {
         }
 
         // If validation passes, save and return the course
+        // Again using the injected repository
         return courseRepository.save(course);
     }
 
@@ -168,6 +257,29 @@ public class CourseService {
      * A student can be enrolled in multiple courses
      * A course can have multiple students
      * 
+     * DEPENDENCY INJECTION IN ACTION (Intermediate):
+     * ===============================================
+     * This method uses BOTH injected repositories:
+     * - studentRepository.findById() → finds the student (injected via constructor)
+     * - courseRepository operations → finds the course (injected via constructor)
+     * 
+     * Without DI, we would need to create both repositories manually:
+     *   StudentRepository studentRepo = new StudentRepository();      // ❌ WRONG
+     *   CourseRepository courseRepo = new CourseRepository();        // ❌ WRONG
+     * 
+     * With DI, they're already available:
+     *   studentRepository.findById(studentId)                         // ✅ RIGHT
+     *   this.getCourseById(courseId)                                 // ✅ RIGHT
+     * 
+     * Testing this method is easy with DI:
+     *   @Test
+     *   public void testEnrollment() {
+     *       StudentRepository mockStudentRepo = mock(StudentRepository.class);
+     *       CourseRepository mockCourseRepo = mock(CourseRepository.class);
+     *       CourseService service = new CourseService(mockCourseRepo, mockStudentRepo);
+     *       // Now test with mock objects that don't touch real database
+     *   }
+     * 
      * Exception Handling Demo:
      * - Throws ResourceNotFoundException if student or course not found
      * - Throws DuplicateResourceException if student is already enrolled
@@ -182,13 +294,15 @@ public class CourseService {
      */
     @Transactional
     public Course enrollStudentInCourse(Long studentId, Long courseId) {
-        // Get the student (will throw ResourceNotFoundException if not found)
+        // Using injected studentRepository to find student
+        // If not found, throws ResourceNotFoundException (handled by repository)
         Student student = studentRepository.findById(studentId)
                 .orElseThrow(() -> new ResourceNotFoundException(
                         "Student with ID " + studentId + " not found!"
                 ));
 
-        // Get the course (will throw ResourceNotFoundException if not found)
+        // Using injected courseRepository (indirectly via getCourseById method)
+        // This method also uses courseRepository that was injected
         Course course = this.getCourseById(courseId);
 
         // Check if student is already enrolled in this course
@@ -209,7 +323,7 @@ public class CourseService {
         // Using the helper method in Student to manage the relationship properly
         student.enrollCourse(course);
 
-        // Save the changes to the database
+        // Save the changes to the database using injected studentRepository
         studentRepository.save(student);
 
         return course;

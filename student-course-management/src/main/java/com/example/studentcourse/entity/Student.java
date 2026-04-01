@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.CascadeType;
@@ -124,7 +125,151 @@ public class Student {
      * - List would allow the same course to be enrolled multiple times
      * - HashSet provides O(1) lookup performance
      */
-    @JsonManagedReference
+    /**
+     * JSON SERIALIZATION ANNOTATIONS - @JsonManagedReference:
+     * ========================================================
+     * 
+     * @JsonManagedReference(value = "student_courses"):
+     * 
+     * Purpose:
+     * - This field IS serialized to JSON
+     * - Marks this as the "forward/managed" side of a bidirectional relationship
+     * - Works WITH @JsonBackReference to prevent infinite circular JSON serialization
+     * 
+     * How It Works:
+     * 1. The value "student_courses" is a LABEL that pairs this with @JsonBackReference
+     * 2. Value MUST MATCH @JsonBackReference value in Course.java
+     * 3. When Student is serialized, this courses field IS included in JSON
+     * 4. When Course objects in courses[] are serialized, their students fields are NOT included
+     *    (they have @JsonBackReference with same value → circular reference prevented)
+     * 
+     * Serialization Process:
+     *   Jackson sees Student object
+     *   → Finds @JsonManagedReference on courses field
+     *   → Serializes courses field and its Course objects
+     *   → For each Course, finds @JsonBackReference with value "student_courses"
+     *   → SKIPS the students field in Course (prevents infinite recursion)
+     *   → Result: Clean JSON without circular references
+     * 
+     * Clean JSON Output (No Circular References!):
+     *   {
+     *     "id": 1,
+     *     "name": "John Doe",
+     *     "email": "john@example.com",
+     *     "rollNumber": "CSE001",
+     *     "phoneNumber": "9876543210",
+     *     "courses": [                         // ← This IS serialized (managed side)
+     *       {
+     *         "id": 101,
+     *         "courseCode": "CS101",
+     *         "courseName": "Java Programming",
+     *         "description": "Learn Java",
+     *         "credits": 3,
+     *         "instructorName": "Dr. Smith",
+     *         "maxStudents": 30
+     *         // Note: students field is NOT included (back reference is excluded)
+     *       },
+     *       {...more courses without students field...}
+     *     ]
+     *   }
+     * 
+     * THE PAIR - How They Work Together:
+     *   Student.courses ← @JsonManagedReference (SERIALIZED)
+     *        ↓ related to Course.students ← @JsonBackReference (NOT SERIALIZED)
+     *   This pairing prevents:
+     *     - Student → Course → Students → Course → Students... (infinite loop)
+     *     - JSON output size explosion
+     *     - Stack overflow errors
+     * 
+     * KEY RULES:
+     * - @JsonManagedReference = FORWARD direction (included in JSON)
+     * - @JsonBackReference = BACKWARD direction (excluded from JSON)
+     * - value must EXACTLY match between both annotations
+     * - Always use on OWNING SIDE of @ManyToMany (entity with @JoinTable)
+     * - If you remove this, circular references will cause JSON serialization to fail
+     */
+    /**
+     * WHAT IS value = "student_courses"?
+     * 
+     * It's a UNIQUE LABEL/IDENTIFIER that connects this @JsonManagedReference with the
+     * matching @JsonBackReference in Course.java. It acts as a "pair name" or "bond"
+     * between the two annotations. Jackson uses this value to recognize which annotations
+     * work together to prevent infinite loops.
+     * 
+     * ANALOGY:
+     * ========
+     * Think of it like a password or secret code:
+     * - @JsonManagedReference has the code: "student_courses"
+     * - @JsonBackReference has the CODE: "student_courses"
+     * - Jackson checks: "Do they have the same code? Yes! → They're a pair!"
+     * - Result: Jackson skips the back reference field → No infinite loop
+     * 
+     * HOW JACKSON USES IT:
+     * ====================
+     * Step 1: Jackson sees Student object
+     * Step 2: Finds @JsonManagedReference(value = "student_courses")
+     * Step 3: Says "Okay, this is the FORWARD side, serialize courses field"
+     * Step 4: Starts serializing each Course in the courses list
+     * Step 5: Encounters @JsonBackReference(value = "student_courses") in Course
+     * Step 6: Checks: "Does it have the same value? YES!"
+     * Step 7: Says "This is the matching BACK REFERENCE, skip the students field"
+     * Step 8: Result: Clean JSON without circular references ✓
+     * 
+     * COMPARISON TABLE:
+     * =================
+     * | Scenario | Value in Student | Value in Course | Result |
+     * |----------|------------------|-----------------|--------|
+     * | Match | "student_courses" | "student_courses" | ✓ Works - No loop |
+     * | Mismatch | "student_courses" | "course_holders" | ✗ Fails - Infinite loop |
+     * | Missing | @JsonManagedReference | No annotation | ✗ Broken - Stack overflow |
+     * 
+     * EXAMPLE SCENARIOS:
+     * ==================
+     * 
+     * CORRECT:
+     *   Student.java:  @JsonManagedReference(value = "student_courses")
+     *   Course.java:   @JsonBackReference(value = "student_courses")
+     *   Message: ✓ Pair is complete and matched
+     * 
+     * WRONG (Different Values):
+     *   Student.java:  @JsonManagedReference(value = "student_courses")
+     *   Course.java:   @JsonBackReference(value = "students_courses_list")
+     *   Message: ✗ Jackson can't pair them → Infinite loop
+     * 
+     * WRONG (Missing Annotation):
+     *   Student.java:  @JsonManagedReference(value = "student_courses")
+     *   Course.java:   // No @JsonBackReference
+     *   Message: ✗ No pair found → Circular reference NOT prevented
+     * 
+     * NAMING BEST PRACTICES:
+     * ======================
+     * Good names (describe the relationship):
+     *   - "student_courses" (student HAS courses)
+     *   - "author_books" (author WROTE books)
+     *   - "category_products" (category HAS products)
+     *   - "parent_children" (parent HAS children)
+     * 
+     * Bad names (too generic):
+     *   - "pair1", "reference1" (doesn't show what's related)
+     *   - "data", "items" (not descriptive)
+     *   - "set1", "set2" (no meaning)
+     * 
+     * TROUBLESHOOTING:
+     * ================
+     * Problem: "JSON serialization fails with stack overflow"
+     * Cause: value in @JsonManagedReference doesn't match Course's @JsonBackReference
+     * Solution: Check if both have the EXACT same value
+     * 
+     * Problem: "courses field appears in nested Course objects"
+     * Cause: Similar to above - values don't match
+     * Solution: Make sure values are identical (case-sensitive!)
+     * 
+     * Problem: "Changes I made don't seem to work"
+     * Cause: You changed one value but forgot to change the other
+     * Solution: ALWAYS change BOTH when you change one
+     */
+    @JsonIgnore
+    @JsonManagedReference(value = "student_courses")  // ← Paired with Course.students
     @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     @JoinTable(
             name = "student_course",
